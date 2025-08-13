@@ -213,6 +213,15 @@ const SignIn = () => {
     }
   })
 
+  function getAccessToken() {
+    const cookie = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('access_token='));
+        
+    if (!cookie) return null; // No token found
+    
+    return decodeURIComponent(cookie.split('=')[1]);
+  }
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
     try {
       const response = await authAPI.login(data.email, data.password)
@@ -223,10 +232,12 @@ const SignIn = () => {
           richColors: true
         })
         
-        const token = document.cookie
-          .split('; ')
-          .find((row) => row.startsWith('access_token='))
-          ?.split('=')[1]
+        // const token = document.cookie
+        //   .split('; ')
+        //   .find((row) => row.startsWith('access_token='))
+        //   ?.split('=')[1]
+
+        const token = getAccessToken();
         
         if (!token) {
           toast.error("Authentication failed", {
