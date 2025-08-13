@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo Hello",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node vercel.js"
   },
   "author": "Atharva Kuldhar, Lakshminarayan Chatla",
   "license": "ISC",
