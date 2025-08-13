@@ -109,7 +109,7 @@ export default function DonationDetailModal({ donation, onClose }: { donation: A
                   <input type="text" disabled={true} value={credits} className="border-2 rounded-lg border-gray-400 bg-slate-200 font-semibold text-lg text-center" size={2} />
                 </div>
                 {
-                  donation.status !== "pending" && (
+                  donation.status == "pending" && (
                     <button
                       className="bg-green-600 text-white px-4 py-2 rounded w-full"
                       onClick={handleApprove}
