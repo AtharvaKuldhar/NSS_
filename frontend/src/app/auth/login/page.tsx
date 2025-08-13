@@ -238,6 +238,7 @@ const SignIn = () => {
         //   ?.split('=')[1]
 
         const token = getAccessToken();
+        console.log(token);
         
         if (!token) {
           toast.error("Authentication failed", {
