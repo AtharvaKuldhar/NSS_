@@ -143,7 +143,7 @@ const handleLogin = asyncHandler(async (req, res) => {
                 // sameSite : "none",
                 // credentials: true,
 
-                httpOnly: true,
+                httpOnly: false,
                 secure: true, // required for cross-site cookies
                 sameSite: 'None', // required for cross-site cookies
                 domain: '.vercel.app', 
@@ -178,7 +178,7 @@ const handleLogin = asyncHandler(async (req, res) => {
             // credentials: true,
             // sameSite : "none"
 
-            httpOnly: true,
+            httpOnly: false,
             secure: true, // required for cross-site cookies
             sameSite: 'None', // required for cross-site cookies
             domain: '.vercel.app', 
