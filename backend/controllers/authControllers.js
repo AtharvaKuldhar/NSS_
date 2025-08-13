@@ -67,7 +67,7 @@
 //         throw new Error("Incorrect volunteer password");
 //     }
 // });
-
+ 
 // // register complete
 // const handleRegister = asyncHandler(async (req, res) => {
 //     const { name, email, password } = req.body;
