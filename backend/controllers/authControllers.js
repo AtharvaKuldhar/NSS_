@@ -140,6 +140,7 @@ const handleLogin = asyncHandler(async (req, res) => {
             const options = {
                 secure: process.env.NODE_ENV === "production",  // Use secure cookies in production
                 httpOnly: false,  // Allow JavaScript access for frontend
+                sameSite : "none",
                 credentials: true,
             };
             return res.cookie("access_token", access_token, options).status(200).json({
@@ -169,6 +170,7 @@ const handleLogin = asyncHandler(async (req, res) => {
             secure: process.env.NODE_ENV === "production",  // Secure in production
             httpOnly: false,  // Allow JavaScript access for frontend
             credentials: true,
+            sameSite : "none"
         };
         return res.cookie("access_token", access_token, options).status(200).json({
             success : true,
@@ -237,7 +239,7 @@ const handleLogout = asyncHandler(async (req, res) => {
     res.clearCookie("access_token", {
         httpOnly: false,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict"
+        sameSite: "none"
     });
     
     return res.status(200).json({
