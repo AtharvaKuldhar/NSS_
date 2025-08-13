@@ -138,7 +138,7 @@ const handleLogin = asyncHandler(async (req, res) => {
             const access_token = await admingenerateAccessToken();
             // console.log(access_token);
             const options = {
-                secure: process.env.NODE_ENV === "production",  // Use secure cookies in production
+                secure: true,  // Use secure cookies in production
                 httpOnly: false,  // Allow JavaScript access for frontend
                 sameSite : "none",
                 credentials: true,
@@ -167,7 +167,7 @@ const handleLogin = asyncHandler(async (req, res) => {
         const access_token = await user.generateAccessToken(1);
         // console.log(access_token);
         const options = {
-            secure: process.env.NODE_ENV === "production",  // Secure in production
+            secure: true,  // Secure in production
             httpOnly: false,  // Allow JavaScript access for frontend
             credentials: true,
             sameSite : "none"
@@ -238,7 +238,7 @@ const handleRegister = asyncHandler(async (req, res) => {
 const handleLogout = asyncHandler(async (req, res) => {
     res.clearCookie("access_token", {
         httpOnly: false,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         sameSite: "none"
     });
     
