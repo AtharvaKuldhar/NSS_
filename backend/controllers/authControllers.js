@@ -248,5 +248,5 @@ const handleLogout = asyncHandler(async (req, res) => {
     });
 });
 
-export { handleLogin, handleRegister, handleLogout };
+export { handleLogin, handleRegister, handleLogout }; 
 
