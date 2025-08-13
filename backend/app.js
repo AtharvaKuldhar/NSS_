@@ -9,9 +9,7 @@ const app = express();
 app.use(cookieParser());
 app.use(
     cors({
-        origin: process.env.NODE_ENV === "production" 
-            ? ["https://your-frontend-domain.com"] 
-            : ["http://localhost:3000"],
+        origin: process.env.ALLOWED_ORIGIN?.split(",") || "http://localhost:3000",
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
