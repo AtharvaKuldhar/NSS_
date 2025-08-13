@@ -138,10 +138,16 @@ const handleLogin = asyncHandler(async (req, res) => {
             const access_token = await admingenerateAccessToken();
             // console.log(access_token);
             const options = {
-                secure: true,  // Use secure cookies in production
-                httpOnly: false,  // Allow JavaScript access for frontend
-                sameSite : "none",
-                credentials: true,
+                // secure: true,  // Use secure cookies in production
+                // httpOnly: false,  // Allow JavaScript access for frontend
+                // sameSite : "none",
+                // credentials: true,
+
+                httpOnly: true,
+                secure: true, // required for cross-site cookies
+                sameSite: 'None', // required for cross-site cookies
+                domain: '.vercel.app', 
+                path: '/'
             };
             return res.cookie("access_token", access_token, options).status(200).json({
                 success : true,
@@ -167,10 +173,16 @@ const handleLogin = asyncHandler(async (req, res) => {
         const access_token = await user.generateAccessToken(1);
         // console.log(access_token);
         const options = {
-            secure: true,  // Secure in production
-            httpOnly: false,  // Allow JavaScript access for frontend
-            credentials: true,
-            sameSite : "none"
+            // secure: true,  // Secure in production
+            // httpOnly: false,  // Allow JavaScript access for frontend
+            // credentials: true,
+            // sameSite : "none"
+
+            httpOnly: true,
+            secure: true, // required for cross-site cookies
+            sameSite: 'None', // required for cross-site cookies
+            domain: '.vercel.app', 
+            path: '/'
         };
         return res.cookie("access_token", access_token, options).status(200).json({
             success : true,
