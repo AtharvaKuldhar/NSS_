@@ -138,7 +138,7 @@ const handleLogin = asyncHandler(async (req, res) => {
             const access_token = await admingenerateAccessToken();
             // console.log(access_token);
             const options = {
-                httpOnly: true, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
+                httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
                 secure: true, // true on Vercel (HTTPS), false locally on localhost
                 sameSite: 'none', // required for cross-site cookie
                 path: '/',
