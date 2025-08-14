@@ -141,8 +141,6 @@ const handleLogin = asyncHandler(async (req, res) => {
                 httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
                 secure: true, // true on Vercel (HTTPS), false locally on localhost
                 sameSite: 'none', // required for cross-site cookie
-                domain:'nssfoodconnect-backend.vercel.app', // caused error for 5 hours straight - .vercel.app doesnt work it needs
-                // exact domain name
                 path: '/'
             };
             return res.cookie("access_token", access_token, options).status(200).json({
@@ -171,8 +169,7 @@ const handleLogin = asyncHandler(async (req, res) => {
         const options = {
             httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
             secure: true, // true on Vercel (HTTPS), false locally on localhost
-            sameSite: 'none', // required for cross-site cookie
-            domain:'nssfoodconnect-backend.vercel.app',
+            sameSite: 'none', 
             path: '/'
         };
         return res.cookie("access_token", access_token, options).status(200).json({
