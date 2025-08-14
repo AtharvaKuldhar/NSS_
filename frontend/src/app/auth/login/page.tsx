@@ -214,7 +214,7 @@ const SignIn = () => {
   })
 
   function getAccessToken() {
-    console.log(document);
+    console.log(document.cookie);
     const cookie = document.cookie
         .split('; ')
         .find((row) => row.startsWith('access_token='));
