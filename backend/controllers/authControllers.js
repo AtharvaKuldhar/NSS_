@@ -172,11 +172,11 @@ const handleLogin = asyncHandler(async (req, res) => {
     if (await user.matchPassword(password)) {
         const access_token = await user.generateAccessToken(1);
         console.log(access_token);
-        const cookieOptions = {
+        const options = {
             httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
-            secure: process.env.NODE_ENV === 'production', // true on Vercel (HTTPS), false locally on localhost
+            secure: true, // true on Vercel (HTTPS), false locally on localhost
             sameSite: 'none', // required for cross-site cookie
-            domain: process.env.NODE_ENV === 'production' ? 'nssfoodconnect-backend.vercel.app' : undefined,
+            domain:'nssfoodconnect-backend.vercel.app',
             path: '/'
         };
         return res.cookie("access_token", access_token, options).status(200).json({
