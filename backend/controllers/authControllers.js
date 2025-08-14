@@ -138,15 +138,11 @@ const handleLogin = asyncHandler(async (req, res) => {
             const access_token = await admingenerateAccessToken();
             // console.log(access_token);
             const options = {
-                // secure: true,  // Use secure cookies in production
-                // httpOnly: false,  // Allow JavaScript access for frontend
-                // sameSite : "none",
-                // credentials: true,
-
-                httpOnly: false,
-                secure: true, // required for cross-site cookies
-                sameSite: 'None', // required for cross-site cookies
-                domain: '.vercel.app', 
+                httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
+                secure: true, // true on Vercel (HTTPS), false locally on localhost
+                sameSite: 'none', // required for cross-site cookie
+                domain:'nssfoodconnect-backend.vercel.app', // caused error for 5 hours straight - .vercel.app doesnt work it needs
+                // exact domain name
                 path: '/'
             };
             return res.cookie("access_token", access_token, options).status(200).json({
@@ -171,7 +167,7 @@ const handleLogin = asyncHandler(async (req, res) => {
 
     if (await user.matchPassword(password)) {
         const access_token = await user.generateAccessToken(1);
-        console.log(access_token);
+        // console.log(access_token);
         const options = {
             httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
             secure: true, // true on Vercel (HTTPS), false locally on localhost
@@ -181,7 +177,7 @@ const handleLogin = asyncHandler(async (req, res) => {
         };
         return res.cookie("access_token", access_token, options).status(200).json({
             success : true,
-            message: ["Login successful - token sent"]
+            message: ["Login successful"]
         });
     } else {
         return res.status(404).json({
