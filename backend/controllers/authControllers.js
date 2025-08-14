@@ -143,7 +143,7 @@ const handleLogin = asyncHandler(async (req, res) => {
                 sameSite: 'none', // required for cross-site cookie
                 path: '/',
                 maxAge: 24 * 60 * 60 * 1000,
-                domain: "nssfoodconnect.vercel.app"
+                domain: "nssfoodconnect.vercel.app" 
             };
             return res.cookie("access_token", access_token, options).status(200).json({
                 success : true,

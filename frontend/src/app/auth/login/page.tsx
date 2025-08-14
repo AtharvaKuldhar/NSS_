@@ -215,12 +215,13 @@ const SignIn = () => {
 
   function getAccessToken() {
     console.log(document);
-    console.log(document.cookie); 
+     
     const cookie = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('access_token='));
+        .split(';')
+        .find((row) => row.trim().startsWith('access_token='));
         
     if (!cookie) return null; // No token found
+    console.log(document.cookie);
     
     return decodeURIComponent(cookie.split('=')[1]);
   }
