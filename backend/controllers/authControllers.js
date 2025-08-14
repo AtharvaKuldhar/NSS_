@@ -142,12 +142,11 @@ const handleLogin = asyncHandler(async (req, res) => {
                 secure: true, // true on Vercel (HTTPS), false locally on localhost
                 sameSite: 'none', // required for cross-site cookie
                 path: '/',
-                maxAge: 24 * 60 * 60 * 1000,
-                domain: "nssfoodconnect.vercel.app" 
+                maxAge: 24 * 60 * 60 * 1000
             };
             return res.cookie("access_token", access_token, options).status(200).json({
                 success : true,
-                message: ["Login successful"]
+                message: ["Login successful",0]
             });
         } else {
             return res.status(404).json({
@@ -173,12 +172,11 @@ const handleLogin = asyncHandler(async (req, res) => {
             secure: true, // true on Vercel (HTTPS), false locally on localhost
             sameSite: 'none', 
             path: '/',
-            maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
-            domain: "nssfoodconnect.vercel.app"
+            maxAge: 24 * 60 * 60 * 1000
         };
         return res.cookie("access_token", access_token, options).status(200).json({
             success : true,
-            message: ["Login successful"]
+            message: ["Login successful",1]
         });
     } else {
         return res.status(404).json({

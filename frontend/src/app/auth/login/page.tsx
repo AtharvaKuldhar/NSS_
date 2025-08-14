@@ -240,31 +240,33 @@ const SignIn = () => {
         //   .find((row) => row.startsWith('access_token='))
         //   ?.split('=')[1]
 
-        const token = getAccessToken();
-        console.log(token);
+        // const token = getAccessToken();
+        // console.log(token);
         
-        if (!token) {
-          toast.error("Authentication failed", {
-            description: "Token not found",
-            richColors: true
-          })
-          return
-        }
+        // if (!token) {
+        //   toast.error("Authentication failed", {
+        //     description: "Token not found",
+        //     richColors: true
+        //   })
+        //   return
+        // }
         
-        const loginSuccess = login(token)
+        // const loginSuccess = login(token)
         
-        if (!loginSuccess) {
-          toast.error("Authentication failed", {
-            description: "Invalid token",
-            richColors: true
-          })
-          return
-        }
+        // if (!loginSuccess) {
+        //   toast.error("Authentication failed", {
+        //     description: "Invalid token",
+        //     richColors: true
+        //   })
+        //   return
+        // }
         
         try {
-          const decodedUser = JSON.parse(atob(token.split('.')[1]))
+          // const decodedUser = JSON.parse(atob(token.split('.')[1]))
           
-          const redirectPath = decodedUser.userType === 0 ? "/admin/donations" : "/volunteer/donate"
+          // const redirectPath = decodedUser.userType === 0 ? "/admin/donations" : "/volunteer/donate"
+          const usrtype = response.message[1];
+          const redirectPath = usrtype === 0 ? "/admin/donations" : "/volunteer/donate"
           
           router.push(redirectPath)
           
