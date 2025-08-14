@@ -14,7 +14,7 @@ export const sendrole = async (req, res, next) => {
         }
 
         res.status(200).json({
-            role: user.role,
+            role: user.userType,
             name: user.name,
             email: user.email
         });
