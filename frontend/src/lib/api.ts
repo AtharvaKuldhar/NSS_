@@ -118,26 +118,26 @@ export const adminAPI = {
   }
 };
 
-// Utility function to decode JWT token from cookies
-export const getTokenFromCookies = () => {
-  if (typeof document === 'undefined') return null;
+// // Utility function to decode JWT token from cookies
+// export const getTokenFromCookies = () => {
+//   if (typeof document === 'undefined') return null;
   
-  const token = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('access_token='))
-    ?.split('=')[1];
+//   const token = document.cookie
+//     .split('; ')
+//     .find((row) => row.startsWith('access_token='))
+//     ?.split('=')[1];
   
-  return token || null;
-};
+//   return token || null;
+// };
 
-// Utility function to decode user from token
-export const decodeUserFromToken = (token: string) => {
-  try {
-    return jwtDecode(token);
-  } catch (error) {
-    console.error('Error decoding token:', error);
-    return null;
-  }
-};
+// // Utility function to decode user from token
+// export const decodeUserFromToken = (token: string) => {
+//   try {
+//     return jwtDecode(token);
+//   } catch (error) {
+//     console.error('Error decoding token:', error);
+//     return null;
+//   }
+// };
 
 export default api; 

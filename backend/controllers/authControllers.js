@@ -165,7 +165,7 @@ const handleLogin = asyncHandler(async (req, res) => {
     }
 
     if (await user.matchPassword(password)) {
-        const access_token = await user.generateAccessToken(1);
+        const access_token = await user.generateAccessToken();
         // console.log(access_token);
         const options = {
             httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.

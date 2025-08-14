@@ -56,10 +56,10 @@ VolunteerSchema.methods.matchPassword = async function(enteredPassword){
     return await bcrypt.compare(enteredPassword,this.password);
 }
 
-VolunteerSchema.methods.generateAccessToken = async function (userRole) {
+VolunteerSchema.methods.generateAccessToken = async function () {
     const payload = {
         _id: this._id,
-        userType: userRole,
+        userType: 1,
         name: this.name,
         email: this.email,
         credits: this.credits,
