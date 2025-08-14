@@ -141,7 +141,8 @@ const handleLogin = asyncHandler(async (req, res) => {
                 httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
                 secure: true, // true on Vercel (HTTPS), false locally on localhost
                 sameSite: 'none', // required for cross-site cookie
-                path: '/'
+                path: '/',
+                maxAge: 24 * 60 * 60 * 1000 
             };
             return res.cookie("access_token", access_token, options).status(200).json({
                 success : true,
@@ -170,7 +171,8 @@ const handleLogin = asyncHandler(async (req, res) => {
             httpOnly: false, // if you want to read it in JS. Set true for increased security and adjust frontend accordingly.
             secure: true, // true on Vercel (HTTPS), false locally on localhost
             sameSite: 'none', 
-            path: '/'
+            path: '/',
+            maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
         };
         return res.cookie("access_token", access_token, options).status(200).json({
             success : true,
