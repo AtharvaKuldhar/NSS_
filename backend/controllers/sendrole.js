@@ -24,3 +24,4 @@ export const sendrole = async (req, res, next) => {
 };
 // This controller can be used to send the user's role and other details
 // after they log in, which can be useful for frontend routing or state management.
+export default {sendrole};
