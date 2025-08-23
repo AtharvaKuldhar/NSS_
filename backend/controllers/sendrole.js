@@ -4,8 +4,7 @@ import Volunteer from "../models/Volunteer.js";
 export const sendrole = async (req, res, next) => {
     try {
         // req.user is from decoded JWT
-        const userId = req.user._id
-
+        const userId = req.user._id        
         // Fetch user from DB (optional, but good for fresh data)
         const user = await Volunteer.findById(userId).select("role name email");
 
